@@ -39,6 +39,15 @@ export class Mascota extends Entity {
   })
   comentario: string;
 
+  @property({
+    type: 'string',
+  })
+  usuarioId?: string;
+
+  @property({
+    type: 'string',
+  })
+  planId?: string;
 
   constructor(data?: Partial<Mascota>) {
     super(data);
