@@ -42,18 +42,23 @@ def mensajetxt():
 
 @app.route("/email")
 def enviarCorreo():
+
+   destino = request.args.get('correo_destino')
+   asunto = request.args.get('asunto')
+   mensaje = request.args.get('contenido')
+   
    message = Mail(
        from_email='lauragonsan7@gmail.com',
-       to_emails='e3lgse3@hotmail.com',
-       subject='Ensayis de envío de correo este es el ensayis de las 9:42',
-       html_content='<strong>Gracias a Chuchito lindo esta vaina funciona!</strong>')
+       to_emails=destino,
+       subject=asunto,
+       html_content=mensaje)
    try:
        sg = SendGridAPIClient(os.environ.get("SENDGRID_API_KEY"))
        response = sg.send(message)
        print(response.status_code)
        print(response.body)
        print(response.headers)
-       print("Parece qeu si se envió")
+       print("Parece que si se envió")
        return "Parece que se envió el correo"
    except Exception as e:
        print("error amigos"+e.message)

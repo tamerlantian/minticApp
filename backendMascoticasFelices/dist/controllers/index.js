@@ -10,4 +10,6 @@ tslib_1.__exportStar(require("./producto-servicio.controller"), exports);
 tslib_1.__exportStar(require("./prospecto.controller"), exports);
 tslib_1.__exportStar(require("./sucursal.controller"), exports);
 tslib_1.__exportStar(require("./usuario.controller"), exports);
+tslib_1.__exportStar(require("./mascota-usuario.controller"), exports);
+tslib_1.__exportStar(require("./mascota-plan.controller"), exports);
 //# sourceMappingURL=index.js.map

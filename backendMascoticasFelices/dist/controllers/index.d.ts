@@ -7,3 +7,5 @@ export * from './producto-servicio.controller';
 export * from './prospecto.controller';
 export * from './sucursal.controller';
 export * from './usuario.controller';
+export * from './mascota-usuario.controller';
+export * from './mascota-plan.controller';
