@@ -1,3 +1,4 @@
+import { service } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -16,8 +17,9 @@ import {
   del,
   requestBody,
   response,
+  HttpErrors,
 } from '@loopback/rest';
-import {Usuario} from '../models';
+import {Credenciales, Usuario} from '../models';
 import {UsuarioRepository} from '../repositories';
 import { AutenticacionService } from '../services';
 const fetch = require('node-fetch');
@@ -26,8 +28,37 @@ export class UsuarioController {
   constructor(
     @repository(UsuarioRepository)
     public usuarioRepository : UsuarioRepository,
+    @service(AutenticacionService)
     public servicioAutenticacion : AutenticacionService
   ) {}
+
+  @post('/identificarUsuario',{
+    responses:{
+      '200':{
+        description:'Identificacion de usuario'
+      }
+    }
+  })
+  async identificarUsuario(
+    @requestBody() credenciales : Credenciales
+  ){
+    let u = await this.servicioAutenticacion.IdentificarUsuario(credenciales.usuario, credenciales.clave);
+    if (u){
+      let token = this.servicioAutenticacion.GenerarTokenJWT(u);
+      return {
+        datos:{
+          nombre: u.nombre,
+          correo: u.correo,
+          id: u.id
+        },
+        tk: token
+      }
+    }else{
+      throw new HttpErrors[401]('Datos inválidos, verifique usuario y contraseña');
+    }
+    
+  }
+
 
   @post('/usuarios')
   @response(200, {
@@ -49,8 +80,8 @@ export class UsuarioController {
   ): Promise<Usuario> {
     let contrasena = this.servicioAutenticacion.GenerarClave();
     let claveCifrada = this. servicioAutenticacion.CifrarClave(contrasena);
-    //usuario.contrasena = claveCifrada;
-    let p = await this.usuarioRepository.create(usuario);
+    usuario.contrasena = claveCifrada;
+    let u = await this.usuarioRepository.create(usuario);
 
     //Enviar correo al usuario
     let destino = usuario.correo;
@@ -60,7 +91,7 @@ export class UsuarioController {
       .then((data:any)=>{
         console.log(data);
       })
-    return p;
+    return u;
   }
 
   @get('/usuarios/count')
