@@ -1,3 +1,4 @@
+import { service } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -26,6 +27,7 @@ export class UsuarioController {
   constructor(
     @repository(UsuarioRepository)
     public usuarioRepository : UsuarioRepository,
+    @service(AutenticacionService)
     public servicioAutenticacion : AutenticacionService
   ) {}
 
@@ -48,8 +50,8 @@ export class UsuarioController {
     usuario: Omit<Usuario, 'id'>,
   ): Promise<Usuario> {
     let contrasena = this.servicioAutenticacion.GenerarClave();
-    let claveCifrada = this. servicioAutenticacion.CifrarClave(contrasena);
-    //usuario.contrasena = claveCifrada;
+    let claveCifrada = this.servicioAutenticacion.CifrarClave(contrasena);
+    usuario.contrasena = claveCifrada;
     let p = await this.usuarioRepository.create(usuario);
 
     //Enviar correo al usuario

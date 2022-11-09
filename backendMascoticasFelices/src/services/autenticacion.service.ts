@@ -20,6 +20,7 @@ export class AutenticacionService {
   /* Servicio para cifrar la clave */
   CifrarClave(contrasena:string){
     let claveCifrada = cryptoJS.MD5(contrasena).toString();
+    return claveCifrada;
   }
 
 
