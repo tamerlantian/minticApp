@@ -1,0 +1,79 @@
+body {
+    margin: 20px;
+    line-height: 1.5em;
+    display: block;
+}
+
+.content {
+    -moz-border-radius: 10px  10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+
+h1, h2, h3, h4 {
+    color: #19a9e5;
+}
+
+.title{
+    text-align: center;
+    margin-top: 5%;
+    font-size: 450%;
+    margin-bottom: 10%;
+}
+
+a {
+    color: #19a9e5;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1487b7;
+    text-decoration: underline;
+}
+
+.card_img2 {
+    width: 50%;
+    margin: auto;    
+}
+
+.card2 {
+    background-color: transparent;
+    border: 0px;
+}
+
+.imgbackground{
+    background-image: URL("LOGO-MASCOTA-FELIZ.png");
+    background-repeat: no-repeat;
+    background-position-x: 90%;
+    background-position-y: 100%;   
+}
+
+.initialbtn{
+    color: #fff;
+    background-color: #19a9e5;
+    border-color: #19a9e5;
+    font-weight: bold;
+    padding: 0.375rem 0.75rem;
+    display: block;
+}
+
+.img_header{
+    width: 6%;
+     
+}
+
+.header{
+    height: 1%;
+}
+
+.petsearch{
+    width: 60em;
+    margin-left: 0.9em;
+}
+
+.petnametitle{
+    text-align: center;
+}
