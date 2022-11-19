@@ -9,6 +9,8 @@ import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
+import { EstrategiaAdministrador } from './srategies/admin.strategy';
+import { AuthenticationComponent, registerAuthenticationStrategy } from '@loopback/authentication';
 
 export {ApplicationConfig};
 
@@ -40,5 +42,9 @@ export class Mascoticasfelicesv2Application extends BootMixin(
         nested: true,
       },
     };
+
+    registerAuthenticationStrategy(this, EstrategiaAdministrador);
+    //Aqui se agregan las líneas para cada estrategia, en este caso solamente tenemos una
+    this.component(AuthenticationComponent);
   }
 }
