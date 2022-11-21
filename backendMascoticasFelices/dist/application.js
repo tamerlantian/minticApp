@@ -9,6 +9,8 @@ const rest_1 = require("@loopback/rest");
 const service_proxy_1 = require("@loopback/service-proxy");
 const path_1 = tslib_1.__importDefault(require("path"));
 const sequence_1 = require("./sequence");
+const admin_strategy_1 = require("./srategies/admin.strategy");
+const authentication_1 = require("@loopback/authentication");
 class Mascoticasfelicesv2Application extends (0, boot_1.BootMixin)((0, service_proxy_1.ServiceMixin)((0, repository_1.RepositoryMixin)(rest_1.RestApplication))) {
     constructor(options = {}) {
         super(options);
@@ -31,6 +33,9 @@ class Mascoticasfelicesv2Application extends (0, boot_1.BootMixin)((0, service_p
                 nested: true,
             },
         };
+        (0, authentication_1.registerAuthenticationStrategy)(this, admin_strategy_1.EstrategiaAdministrador);
+        //Aqui se agregan las líneas para cada estrategia, en este caso solamente tenemos una
+        this.component(authentication_1.AuthenticationComponent);
     }
 }
 exports.Mascoticasfelicesv2Application = Mascoticasfelicesv2Application;

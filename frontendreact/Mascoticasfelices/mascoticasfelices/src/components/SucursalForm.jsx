@@ -37,7 +37,7 @@ export default function SucursalForm() {
             <label className='form__label' htmlFor="ciudad">Ciudad:</label>
             <input className='form__input' {...register("ciudad", { required: true })} />
 
-            <label className='form__label' htmlFor="direccion">Apellido:</label>
+            <label className='form__label' htmlFor="direccion">Dirección:</label>
             <input className='form__input' {...register("direccion", { required: true })} />
 
             <label className='form__label' htmlFor="telefono">Telefono:</label>

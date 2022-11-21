@@ -12,11 +12,10 @@ import {
     MDBCollapse
 } from 'mdb-react-ui-kit';
 
-export default function Navbar() {
+export default function Navbaruser() {
     const [showBasic, setShowBasic] = useState(false);
   return (
-    <>
-    <header>      
+    <>      
       <MDBNavbar dark bgColor='dark'>
         <MDBContainer fluid>
           <MDBNavbarBrand tag="span" className='mb-0 h1'>MASCOTICAS FELICES</MDBNavbarBrand>
@@ -49,6 +48,21 @@ export default function Navbar() {
             </MDBNavbarItem>
             <MDBNavbarItem>
               <MDBNavbarLink href='#'>Contáctenos</MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink href='#'>Usuarios</MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink href='#'>Afiliaciones</MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink href='#'>Planes</MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink href='#'>Sucursales</MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink href='#'>Informes</MDBNavbarLink>
             </MDBNavbarItem>          
            
           </MDBNavbarNav>
@@ -56,25 +70,10 @@ export default function Navbar() {
           
         </MDBCollapse>
         <form className='justify-content-start'>            
-            <MDBBtn outline color='secondary' className='me-2' type='button' >Registrarse</MDBBtn>
-            <MDBBtn outline color='light' className='me-2' type='button'>Ingresar</MDBBtn>
+            <MDBBtn outline color='secondary' className='me-2' type='button' >Salir</MDBBtn>
           </form>
       </MDBContainer>
     </MDBNavbar>
-    <div className='text-center bg-image header'>
-        <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)'}}>
-          <div className='d-flex justify-content-center align-items-center h-400'>
-            <div className='p-7-6 text-white'>
-              <h1 className='mb-3'>Mascoticas felices hacen dueños felices</h1>
-              <h4 className='mb-3'>Para más información</h4>
-              <MDBBtn tag="a" outline size="lg" className='form__submit'>
-                Contáctanos
-              </MDBBtn>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
     </>
   );
 }

@@ -27,7 +27,7 @@ export class PlanController {
     public planRepository : PlanRepository,
   ) {}
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @post('/plans')
   @response(200, {
     description: 'Plan model instance',

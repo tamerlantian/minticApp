@@ -19,6 +19,7 @@ import {
 } from '@loopback/rest';
 import {Prospecto} from '../models';
 import {ProspectoRepository} from '../repositories';
+const fetch = require('node-fetch');
 
 export class ProspectoController {
   constructor(
@@ -45,6 +46,14 @@ export class ProspectoController {
     prospecto: Omit<Prospecto, 'id'>,
   ): Promise<Prospecto> {
     return this.prospectoRepository.create(prospecto);
+    //Enviar correo al administrador
+    let destino = 'lauragonsan7@gmail.com';
+    let asunto = 'Nuevo prospecto proyecto Mascotas felices';
+    let contenido = `Hola Admin, el prospecto ${prospecto.nombre}${prospecto.apellido} con el correo ${prospecto.correo} y celular ${prospecto.celular}, envía el siguiente comentario ${prospecto.comentario}`;
+    fetch(`http://127.0.0.1:5000/email?correo_destino=${destino}&asunto=${asunto}&contenido=${contenido}`)
+      .then((data:any)=>{
+        console.log(data);
+      })
   }
 
   @get('/prospectos/count')

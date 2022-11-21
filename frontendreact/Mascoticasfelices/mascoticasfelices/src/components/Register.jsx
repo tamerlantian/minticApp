@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
-export default function UserForm() {
+export default function RegiserForm() {
     const {
         register,
         handleSubmit,
@@ -9,7 +9,7 @@ export default function UserForm() {
     } = useForm()
 
     const onSubmit = async (data) => {
-        const { cedula, nombre, apellido, telefono, correo, rol } = data
+        const { cedula, nombre, apellido, telefono, correo } = data
         const requestOption = {
             method: 'POST',
             headers : {
@@ -21,7 +21,7 @@ export default function UserForm() {
                 apellido: apellido,
                 telefono: telefono,
                 correo: correo,
-                rol: rol
+                rol: "user"
             })
         }
 
@@ -32,7 +32,7 @@ export default function UserForm() {
 
     return (
         <form className="form" onSubmit={handleSubmit(onSubmit)} >
-            <h2>Crear nuevo usuario</h2>
+            <h2>Registro</h2>
             <label className='form__label' htmlFor="cedula">Cedula:</label>
             <input className='form__input' {...register("cedula", { required: true })} />
 
@@ -46,17 +46,7 @@ export default function UserForm() {
             <input className='form__input' {...register("telefono", { required: true })} />
 
             <label className='form__label' htmlFor="correo">Correo:</label>
-            <input className='form__input' {...register("correo", { required: true })} />
-
-            <label className='form__label' htmlFor="rol">Rol:</label>
-
-            <select className='form__input' 
-             {...register("rol", { required: true })}>
-            <option value="admin">Administrador</option>
-            <option value="user">Cliente</option>
-            <option value="analyst">Asesor</option>
-          </select>
-             
+            <input className='form__input' {...register("correo", { required: true })} />            
             
             <input className='form__submit' type="submit" />
         </form>

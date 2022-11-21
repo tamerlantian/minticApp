@@ -27,7 +27,7 @@ export class ProductoServicioController {
     public productoServicioRepository : ProductoServicioRepository,
   ) {}
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @post('/producto-servicios')
   @response(200, {
     description: 'ProductoServicio model instance',
