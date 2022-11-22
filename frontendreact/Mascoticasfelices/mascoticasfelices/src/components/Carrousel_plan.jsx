@@ -1,91 +1,60 @@
 import React from 'react';
 import { useEffect, useState } from "react";
+import axios from 'axios';
 import {
-  MDBCarousel,
-  MDBCarouselItem,
   MDBCard,
+  MDBCardImage,
   MDBCardBody,
   MDBCardTitle,
   MDBCardText,
-  MDBCardImage,
-  MDBBtn
+  MDBCardFooter,
+  MDBRow,
+  MDBCardHeader,
+  MDBCol
 } from 'mdb-react-ui-kit';
 
 export default function Carrouselplan() {
-    /*const [planes, setplanes] = useState(null);    
-    const planlist = []
-    const results = []
-        const requestOption = {
-        method: 'GET',
-        headers : {
-            'Content-Type': 'application/json'
-        }
-    }
+  const [products, setproducts] = useState([]);       
+    
+  useEffect(() => {
 
-    useEffect(() => {
+      axios.get('http://localhost:3000/producto-servicios')
+      .then((response)=>{
+          console.log(response.data)
+          setproducts(response.data);
+      });
 
-        fetch('http://localhost:3000/plans', requestOption)
-        .then(res => res.json())        
-        .then(data =>{
-            console.log(data)
-            setplanes(data.message);
-        });
+      }, []); 
 
-        }, []);
-
-        /*planes.forEach(data => {
-            planlist.push(
-                <div key={data.id}>
-                    <h2>Nombre: {data.nombre}</h2>
-                    <h2>Descripción: {data.descripcion}</h2>
-                    <h2>Precio: {data.precio}</h2>
-                    
-                </div>,
-            );
-            
-        });*/
-
-        
-
-
-  return (
-    <MDBCarousel showControls showIndicators dark fade>
-      <MDBCarouselItem
-        className='w-100 d-block'
-        itemId={1}
-        src='https://fondosmil.com/fondo/17538.jpg'
-        alt='...'
-      >
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-      </MDBCarouselItem>
-      <MDBCarouselItem
-        className='w-100 d-block'
-        itemId={2}
-        src='https://fondosmil.com/fondo/17538.jpg'
-        alt='...'
-      >
-        <h5>Second slide label</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </MDBCarouselItem>
-
-      <MDBCarouselItem
-         className='w-100 d-block'
-         itemId={3}
-         src='https://fondosmil.com/fondo/17538.jpg'
-         alt='...'  
-      >
-        <MDBCard>
-      <MDBCardImage src='https://mdbootstrap.com/img/new/standard/nature/184.webp' position='top' alt='...' />
-      <MDBCardBody>
-        <MDBCardTitle>Card title</MDBCardTitle>
-        <MDBCardText>
-          Some quick example text to build on the card title and make up the bulk of the card's content.
-        </MDBCardText>
-        <MDBBtn href='#'>Button</MDBBtn>
-      </MDBCardBody>
-    </MDBCard>
-      </MDBCarouselItem>
-    </MDBCarousel>
+  
+  return (    
+    <div className='container margen-contenido'>
+            <h2>Conoce nuestros productos y servicios</h2>
+    <MDBRow className='row-cols-1 row-cols-md-3 g-4'>
+    {products.map((data, index) => {
+                        return (
+      <MDBCol>
+        <MDBCard className='h-100'>
+        <MDBCardHeader background='transparent' border='success'>
+        {data.tipo}
+        </MDBCardHeader>
+          <MDBCardImage
+            src='https://mdbootstrap.com/img/new/standard/city/041.webp'
+            alt='...'
+            position='top'
+          />
+          <MDBCardBody>
+            <MDBCardTitle>{data.nombre}</MDBCardTitle>
+            <MDBCardText>{data.descripcion}
+            </MDBCardText>
+          </MDBCardBody>
+          <MDBCardFooter>
+            <small className='text-muted'>Precio: {data.precio} COP</small>
+          </MDBCardFooter>
+        </MDBCard>
+      </MDBCol>
+                        )})}      
+    </MDBRow>
+    </div>
   );
 }

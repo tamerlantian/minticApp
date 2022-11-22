@@ -36,8 +36,8 @@ export default function ProductUpdate() {
                 <Form.Field>
                     <label className='form__label'>Tipo:</label>
                     <select className='form__input'placeholder='Rol' value={tipo} onChange={(e) => setTipo(e.target.value)}>
-                        <option value="product">Producto</option>
-                        <option value="service">Servicio</option>
+                        <option value="Producto">Producto</option>
+                        <option value="Servicio">Servicio</option>
                     </select>                
                 </Form.Field>
                 <Form.Field>

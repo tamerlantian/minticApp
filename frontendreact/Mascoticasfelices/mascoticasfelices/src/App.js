@@ -7,6 +7,7 @@ import PlanForm from './components/PlanForm'
 import SucursalForm from './components/SucursalForm'
 import UserLogin from './components/login'
 import Carrouselplan from './components/Carrousel_plan'
+import MisionVision from './components/MisionVision'
 import PlanListRead from './components/PlanList'
 import PlanUpdate from './components/PlanUpdate'
 import UserListRead from './components/UserList'
@@ -33,12 +34,17 @@ function App() {
       </div>       
       
       
-      <Footer /> */}
+       */}
+      <Navbar />
+      <Carrouselplan/>
+      <MisionVision/>
+      <ProspectForm/>
+      <Footer />
 <Router>
-      <div className="main">
+      <div>
         <h2 className="main-header">React Crud Operations</h2>
         <div>
-          <Link to='/ProspectoForm'>
+          <Link to='/ProductoForm'>
           <h3>Crear</h3></Link>          
         </div>
         <div style={{ marginTop: 20 }}>

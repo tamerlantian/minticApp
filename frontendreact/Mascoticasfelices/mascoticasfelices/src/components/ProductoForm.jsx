@@ -34,8 +34,8 @@ export default function ProductForm() {
             <label className='form__label' htmlFor="tipo">Tipo:</label>
             <select className='form__input' 
              {...register("tipo", { required: true })}>
-            <option value="product">Producto</option>
-            <option value="service">Servicio</option>
+            <option value="Producto">Producto</option>
+            <option value="Servicio">Servicio</option>
             </select>
 
             <label className='form__label' htmlFor="nombre">Nombre:</label>

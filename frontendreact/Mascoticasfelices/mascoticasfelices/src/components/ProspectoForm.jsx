@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { Container } from 'semantic-ui-react'
 
 export default function ProspectForm() {
     const {
@@ -30,7 +31,11 @@ export default function ProspectForm() {
     }
 
     return (
+        
+        <Container style={{textAlign: '-webkit-center', marginBottom: '5%', marginTop: '5%'}}>
         <form className="form" onSubmit={handleSubmit(onSubmit)} >
+            
+            <h2>Contáctenos</h2>
             
             <label className='form__label' htmlFor="nombre">Nombre:</label>
             <input className='form__input' {...register("nombre", { required: true })} />
@@ -49,6 +54,9 @@ export default function ProspectForm() {
              
             
             <input className='form__submit' type="submit" />
+
+            
         </form>
+        </Container>
     )
 }
