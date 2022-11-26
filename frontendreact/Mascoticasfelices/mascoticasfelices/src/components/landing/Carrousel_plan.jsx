@@ -28,12 +28,13 @@ export default function Carrouselplan() {
 
   
   return (    
-    <div className='container margen-contenido'>
-            <h2>Conoce nuestros productos y servicios</h2>
+    <div className='imgcarrouselbackground'>
+    <div className='container carrousel'>
+            <h2 className='titlecarrousel'>Conoce nuestros productos y servicios</h2>
     <MDBRow className='row-cols-1 row-cols-md-3 g-4'>
     {products.map((data, index) => {
                         return (
-      <MDBCol>
+      <MDBCol key={index}>
         <MDBCard className='h-100'>
         <MDBCardHeader background='transparent' border='success'>
         {data.tipo}
@@ -55,6 +56,7 @@ export default function Carrouselplan() {
       </MDBCol>
                         )})}      
     </MDBRow>
+    </div>
     </div>
   );
 }

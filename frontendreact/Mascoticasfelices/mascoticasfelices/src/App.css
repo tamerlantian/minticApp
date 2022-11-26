@@ -62,3 +62,11 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 12px !important;
 }
+
+.contactenos{
+  text-align: '-webkit-center'; 
+  margin-bottom: '5%'; 
+  margin-top: '5%';
+  background-image: '\textura2.png';
+
+}

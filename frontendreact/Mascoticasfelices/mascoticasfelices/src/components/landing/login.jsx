@@ -5,11 +5,14 @@ export default function UserLogin() {
     const {
         register,
         handleSubmit,
+        
         //formState: { errors }
-    } = useForm()
-
+    } = useForm()    
+    
+    
     const onSubmit = async (data) => {
         const { usuario, clave} = data
+        
         const requestOption = {
             method: 'POST',
             headers : {
@@ -21,10 +24,16 @@ export default function UserLogin() {
             })
         }
 
+        
         fetch('http://localhost:3000/identificarUsuario', requestOption)
         .then(res => res.json())
         .then(data => console.log(data))
+            (data.tk)
+        
+        
+                    
     }
+
 
     return (
         <form className="form" onSubmit={handleSubmit(onSubmit)} >

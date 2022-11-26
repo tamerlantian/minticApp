@@ -42,7 +42,8 @@ export class UsuarioController {
   async identificarUsuario(
     @requestBody() credenciales : Credenciales
   ){
-    let u = await this.servicioAutenticacion.IdentificarUsuario(credenciales.usuario, credenciales.clave);
+    let pass = await this.servicioAutenticacion.CifrarClave(credenciales.clave)
+    let u = await this.servicioAutenticacion.IdentificarUsuario(credenciales.usuario, pass);
     if (u){
       let token = this.servicioAutenticacion.GenerarTokenJWT(u);
       return {

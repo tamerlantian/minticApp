@@ -62,14 +62,14 @@ export default function Navbar() {
       </MDBContainer>
     </MDBNavbar>
     <div className='text-center bg-image header'>
-        <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)'}}>
+        <div className='height-mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)'}}>
           <div className='d-flex justify-content-center align-items-center h-400'>
-            <div className='p-7-6 text-white'>
+            <div className='text-white'>
               <h1 className='mb-3'>Mascoticas felices hacen dueños felices</h1>
               <h4 className='mb-3'>Para más información</h4>
-              <MDBBtn tag="a" outline size="lg" className='form__submit'>
+              <a href='!#'><button outline size="lg" className='form__submit'>
                 Contáctanos
-              </MDBBtn>
+                </button></a>
             </div>
           </div>
         </div>
